@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-back);
+    font-family: "Open Sans", sans-serif;
+    color: var(--color-front);
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+
+    /* все <h1> кроме <nav h1> */
+    &:not(nav h1) {
+        margin-bottom: 25px;
+    }
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.5rem;
+}
+
+hr {
+    width: 5%;
+    margin: auto;
+    margin-bottom: 25px;
+    border: 1px solid var(--color-red);
+}
+
+a {
+    text-decoration: none;
+    /* сброс стандартного синего цвета ссылки, чтобы начальный брался из body */
+    color: unset;
+    transition: color 0.3s ease;
+    /* &:not(.btn a):hover {
+        color: var(--color-red);
+    } */
+    &:visited {
+        color: var(--color-front);
+    }
+}
+
+/* все красные кнопки */
+.btn {
+    display: inline-block;
+    /* background: linear-gradient(130deg, #ff6f68, var(--color-red)); */
+    background-color: var(--color-red);
+    color: white;
+    padding: 8px 16px;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+
+
+/* ================= COLORIZE ================= */
+
+
+.redColor {
+    color: var(--color-red);
+}
+
+.redBg {
+    background-color: var(--color-red) !important;
+    color: white !important;
+}
+
+
+
+/* ================ NAV ================ */
+nav {
+    box-shadow: 0px 6px 2px -3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 7;
+
+    background-color: var(--color-back);
+    padding: 15px var(--left-right-offset);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h1 {
+        transition: color 0.3s ease;
+        &:hover {
+            color: var(--color-red);
+        }
+    }
+
+    & ul {
+        align-items: center;
+        list-style-type: none;
+        /* Убираем точки */
+        padding: 0;
+        /* Убираем отступы */
+        display: flex;
+        /* Располагаем элементы в строку */
+
+        /* отступ между пунтками навигационки */
+        & li:not(:last-child) {
+            /* Расстояние между пунктами */
+            margin-right: 30px;
+            
+            &:hover {
+                color: var(--color-red);
+            }
+        }
+    }
+
+}
+
+/* если секция контрастирующая */
+.contrast {
+    background-color: var(--color-front);
+    color: var(--color-back);
+}
+
+footer {
+    padding: 30px 80px;
+}
+
+section{
+    gap: 100px;
+    padding: 70px 100px 70px 80px;
+
+    & >h1 {
+        text-align: center;
+    }
+
+
+    /* ЕСЛИ ЕСТЬ ЛЕВАЯ И ПРАВЫЕ ПОЛОВИНКИ */
+    & .left {
+        flex: 3;
+    }
+    & .left + .right {
+        flex: 5;
+        display: grid;
+        gap: 0 50px;
+        & p {
+            color: gray;
+        }
+
+
+        /* === лютая система: если в .right два, три или четыре .advantages, то сетка перестроится === */
+        /* Если в .right два элемента .advantages */
+        &:has(:nth-last-of-type(2)) {
+            /* background-color: rgb(133, 30, 30); */
+
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas:
+            "a b";
+
+            /* два элемента */
+            & .advantages {
+                &:nth-child(1) { grid-area: a; }
+                &:nth-child(2) { grid-area: b; }
+            }
+        }
+
+        /* 2 + eсли в .right три элемента .advantages */
+        &:has(:nth-last-of-type(3)) {
+            /* background-color: rgb(173, 173, 38); */
+
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+            "a b"
+            "c c";
+
+            /* третий элемент */
+            & .advantages {
+                &:nth-child(3) { grid-area: c; }
+            }
+        }
+
+        /* 2+3 + eсли в .right четыре элемента .advantages */
+        &:has(:nth-last-of-type(4)) {
+            /* background-color: rgb(38, 173, 54); */
+
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+            "a b"
+            "c d";
+
+        
+            /* четвертый элементы */
+            & .advantages {
+                &:nth-child(4) { grid-area: d; }
+            }
+        }
+    }
+}
+
+
+
+.icon {
+    height: 40px;
+}
+
+.advantages {
+    & img {
+        /* https://codepen.io/sosuke/pen/Pjoqqp */
+        filter: invert(25%) sepia(59%) saturate(4455%) hue-rotate(344deg) brightness(96%) contrast(84%);
+    }
+}
+
+.df {
+    display: flex;
+}
+
+
+
+/* Бургер меню */
+
+.menu-toggle {
+    background-color: transparent;
+    background-image: url("/static/img/icons/burgerMenu.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: var(--invert);
+
+    z-index: 1;
+    display: none;
+    width: 30px;
+    aspect-ratio: 1/1;
+
+    border: none;
+    cursor: pointer;
+
+    &:has(+ .menu-open) {
+        background-image: url("/static/img/icons/burgerClose.svg");
+    }
+}
+
+/* Стили для экранов меньше 880px */
+@media (max-width: 880px) {
+    :root {
+        --left-right-offset: 40px;
+    }
+    
+    section {
+        padding: 70px 40px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    #nav-menu {
+        display: none;
+
+        &.menu-open {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-back);
+            justify-content: center;
+            align-items: center;
+
+            & li {
+                margin: 0 0 30px;
+                font-size: 2rem;
+            }
+        }
+    }
+}

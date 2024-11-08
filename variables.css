@@ -1,0 +1,31 @@
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-back: #f1f1f1;
+        --color-back_second: #dadada;
+        --color-front: #222222;
+        --invert: invert(0);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-back: #202020;
+        --color-back_second: #383838;
+        --color-front: #eee;
+        --invert: invert(1);
+    }
+}
+
+:root {
+    /* полупрозрачный цвет для текста */
+    --color-50proc: color-mix(in srgb, var(--color-front) 50%, transparent);
+    --color-blue: #478cd5;
+    --color-green: #7ac44d;
+    --color-amber: #dd9672;
+    /* --color-red: #e03a3c; */
+    --color-red: #db4144;
+
+    --borderRadius: 6px;
+    --left-right-offset: 80px;
+
+}

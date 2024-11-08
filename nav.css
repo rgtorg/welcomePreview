@@ -1,0 +1,42 @@
+/* ================ NAV ================ */
+nav {
+    box-shadow: 0px 6px 2px -3px rgba(0,0,0,0.1);
+    position: sticky;
+
+    top: 0;
+    z-index: 9;
+
+    background-color: var(--color-back);
+    padding: 15px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h1 {
+        transition: color 0.3s ease;
+        &:hover {
+            color: var(--color-red);
+        }
+    }
+
+    & ul {
+        align-items: center;
+        list-style-type: none;
+        /* Убираем точки */
+        padding: 0;
+        /* Убираем отступы */
+        display: flex;
+        /* Располагаем элементы в строку */
+
+        /* отступ между пунтками навигационки */
+        & li:not(:last-child) {
+            /* Расстояние между пунктами */
+            margin-right: 30px;
+            
+            &:hover {
+                color: var(--color-red);
+            }
+        }
+    }
+
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="variables.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="styles.css">
+
+
+    <style>
+        #welcome {
+            color: var(--color-red);
+            text-shadow: 2px 2px 2px var(--color-back);
+            background-image: url("welcome_back.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            aspect-ratio: 16/9;
+            position: relative;
+            overflow: hidden;
+            
+        }
+
+        #mask_front {
+            background-image: url("welcome_front.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+
+        .parallax-text {
+            position: absolute;
+            right: 10%;
+            font-size: 2em;
+            z-index: 0;
+
+            &.a {
+                top: 12%;
+                right: 9%;
+                font-size: 3vw;
+                filter: blur(1.1px);
+
+            }
+            
+            &.b {
+                top: 19%;
+                right: 9%;
+                font-size: 5vw;
+                filter: blur(1px);
+            }
+            
+            &.c {
+                top: 29%;
+                right: 9%;
+                font-size: 7vw;
+                filter: blur(0.5px);
+            }
+        }
+
+        
+
+        #link2home {
+            position: absolute; /* Изначальное позиционирование */
+            top: 2vw; /* Расстояние от верхней границы */
+            left: var(--left-right-offset);
+            z-index: 9;
+            color: var(--color-front);
+            text-shadow: 3px 3px 2px var(--color-back),
+                         2px 2px 16px var(--color-back);
+            transition: position 0.3s ease; /* Плавный переход */
+            
+            
+            & h1 {
+                font-size: 4vw; /* Начальный размер */
+                transition: font-size 0.3s ease;
+            }
+        }
+        
+        #link2home.fixed {
+            position: fixed; /* Фиксированное позиционирование при скролле */
+            top: 0; /* Прикрепляем к верхней части окна */
+            left: var(--left-right-offset);
+            padding: 10px 0;
+            z-index: 10;
+
+            & h1 {
+                font-size: 30px; /* Размер шрифта при фиксированном положении */
+            }
+        }
+        
+    
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div></div>
+        <button id="menu-toggle" class="menu-toggle"></button>
+        <ul id="nav-menu">
+            <li><a href="/catalog">Каталог</a></li>
+            <li><a href="#">Обучение</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a class="btn redBg" href="tel:+79134802800">+7 (913) 480-28-00</a></li>
+        </ul>
+    </nav>
+
+    <div id="welcome">
+        <a href="/" id="link2home">
+            <h1>E-survey <span style="color: var(--color-red)">Russia</span></h1>
+        </a>
+        <h1 class="parallax-text a">РЕЗУЛЬТАТЫ</h1>
+        <h1 class="parallax-text b">ТОЧНОСТЬ</h1>
+        <h1 class="parallax-text c">ИННОВАЦИИ</h1>
+        <div id="mask_front"></div>
+    </div>
+
+
+
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const parallaxText1 = document.querySelector('.parallax-text.a');
+            const parallaxText2 = document.querySelector('.parallax-text.b');
+            const parallaxText3 = document.querySelector('.parallax-text.c');
+
+            let scrollPosition = window.pageYOffset;
+
+            parallaxText1.style.transform = 'translateY(' + scrollPosition * 0.2 + 'px)';
+            parallaxText2.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+            parallaxText3.style.transform = 'translateY(' + scrollPosition * 0.7 + 'px)';
+        });
+    </script>
+    <script>
+        window.addEventListener('scroll', function () {
+            const link2home = document.getElementById('link2home');
+            const heading = link2home.querySelector('h1');
+            const scrollThreshold = window.innerWidth * 0.02 + 60; // Порог 2vw + 60px
+    
+            // Если прокрутили достаточно, фиксируем блок и устанавливаем окончательный размер шрифта
+            if (window.scrollY >= scrollThreshold) {
+                link2home.classList.add('fixed');
+                heading.style.fontSize = '30px';
+            } else {
+                link2home.classList.remove('fixed');
+                
+                // Вычисляем уменьшение размера шрифта
+                const startFontSize = 4; // Начальный размер в vw
+                const minFontSize = 30 / window.innerWidth * 100; // Минимальный размер в vw для 30px
+                const currentFontSize = startFontSize - (window.scrollY / scrollThreshold) * (startFontSize - minFontSize);
+                
+                heading.style.fontSize = `${currentFontSize}vw`;
+            }
+        });
+    </script>
+    
+    
+    
+
+</body>
+
+</html>
